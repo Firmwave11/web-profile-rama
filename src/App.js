@@ -7,7 +7,8 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from './theme';
 import GlobalStyles from './components/GlobalStyles';
 import Profile from './layouts/index';
-import Home from './home/index';
+import Home from './views/home/index';
+import About from './views/about/index';
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyles/>
         <Switch>
-          <Route path="/" exact={true} name="Home" component={Home} />
-          <Route path="/about" name="About" component={Profile} />
+          <Route path="/" exact name="Home" component={Home} />
+          <Route path="/about" name="About" component={About} />
           <Route path="/project" name="Project" component={Profile} />
           <Route path="/contact" name="Contact" component={Profile} />
         </Switch>

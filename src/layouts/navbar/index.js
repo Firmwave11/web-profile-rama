@@ -15,7 +15,9 @@ import {
 } from '@material-ui/core';
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import MenuIcon from '@material-ui/icons/Menu';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { 
+  NavLink as RouterLink,
+ } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import nav from './_nav';
@@ -59,6 +61,13 @@ const useStyles = makeStyles((theme) => ({
     '& $title': {
       fontWeight: theme.typography.fontWeightMedium
     },
+  },
+  activeContact: {
+    backgroundColor: theme.palette.secondary.main,
+    color:colors.common.white
+  },
+  buttonOutlined:{
+    color:theme.palette.secondary.main,
   },
   title: {
     marginRight: 'auto'
@@ -130,14 +139,16 @@ const Navbar = (props) =>{
         activeClassName={classes.active}
         component={RouterLink}
         to={item.href}
-        className={clsx(classes.button,classes.buttonText)}>
+        className={clsx(classes.button,classes.buttonText)}
+        exact={item.href === "/"?true:false}
+        >
           {item.title}
         </Button>:
         <Button 
         component="a"
         variant="outlined" 
         color="secondary" 
-        activeClassName={classes.active}
+        activeClassName={classes.activeContact}
         component={RouterLink}
         to={item.href}
         className={classes.buttonText} 
@@ -154,6 +165,7 @@ const Navbar = (props) =>{
     {nav.map((item)=>
     <>
     <ListItem
+      key={item.href}
       className={classes.item}
       disableGutters
     >
@@ -162,6 +174,7 @@ const Navbar = (props) =>{
         className={clsx(classes.button,classes.buttonDrawer)}
         component={RouterLink}
         to={item.href}
+        exact={item.href === "/"?true:false}
       >
         <span className={classes.title}>
           {item.title}

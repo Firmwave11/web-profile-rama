@@ -7,31 +7,9 @@ import {
   Hidden
 } from '@material-ui/core';
 import Typed from "react-typed";
-import Layout from '../layouts/index';
+import Layout from '../../layouts/index';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow:1,
-    backgroundColor:theme.palette.primary.main
-  },
-  container:{
-    padding:"4% 5%"
-  },
-  content:{
-    marginTop:0,
-  },
-  startedContent:{
-    display:"flex",
-    alignItems:"center",
-    justifyContent:"center",
-    flexDirection:"column",
-    height:416,
-    opacity: 1,
-    visibility: "visible",
-    padding: 0,
-    margin: 0,
-    position: "relative",
-  },
   type:{
     color:"#999999"
   }

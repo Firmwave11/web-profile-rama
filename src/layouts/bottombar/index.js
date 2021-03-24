@@ -8,9 +8,11 @@ import {
   Container,
   colors,
   Grid,
-  Typography
+  Typography,
+  Link
 } from '@material-ui/core';
 import { fade } from "@material-ui/core/styles/colorManipulator";
+import NightsStayIcon from '@material-ui/icons/NightsStay';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import social from '../../data/socialLink';
@@ -26,6 +28,23 @@ const useStyles = makeStyles((theme) => ({
       "@media (hover: none)": {
         backgroundColor: "transparent"
       }
+    }
+  },
+  iconNight:{
+    color:"white",
+    textTransform:'none',
+    "&:hover": {
+      color:colors.yellow[400],
+      backgroundColor: fade(colors.yellow[400], theme.palette.action.hoverOpacity),
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        backgroundColor: "transparent"
+      }
+    }
+  },
+  link:{
+    "& .MuiLink-underline:hover":{
+      textDecoration:"none !important"
     }
   },
   appBar: {
@@ -62,8 +81,19 @@ const BottomBar = () =>{
         <Toolbar>
           <Hidden smDown>
             <Typography className={classes.copyRight}>
-              © Copyright Rama Sapto P - All right reserved
+              © Built at 
             </Typography>
+            <IconButton  className={classes.iconNight}>
+              <NightsStayIcon/>
+            </IconButton>
+            <Typography className={classes.copyRight}>
+             by&nbsp;
+            </Typography>
+            <Link href="https://github.com/Firmwave11/web-profile-rama" target="_blank" rel="noopener noreferrer" color="inherit" className={classes.link}  >
+              <Typography className={clsx(classes.icon,classes.copyRight)}>
+                Rama Sapto Pamungkas
+              </Typography>
+            </Link>
             <div className={classes.grow} />
               {icon}
           </Hidden>
