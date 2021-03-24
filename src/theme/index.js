@@ -16,8 +16,13 @@ const theme = createMuiTheme({
     text: {
       primary: colors.common.white,
       secondary: colors.lightBlue[400]
-    }
+    },
   },
+  typography: {
+    allVariants: {
+      color: colors.common.white
+    },
+  }
 });
 
 export default theme;

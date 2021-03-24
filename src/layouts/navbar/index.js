@@ -72,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent:'center',
 
   },
+  container:{
+    padding:"2px 5%"
+  },
   divider: {
     // Theme Color, or use css color in quote
     background: theme.palette.secondary.main,
@@ -80,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ElevationScroll(props) {
   const { children, window } = props;
+  const classes = useStyles() 
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.
   // This is only being set here because the demo is in an iframe.
@@ -91,6 +95,8 @@ function ElevationScroll(props) {
 
   return React.cloneElement(children, {
     elevation: trigger ? 4 : 0,
+    position: trigger? "fixed":"sticky",
+    className: trigger?classes.container:""
   });
 }
 
@@ -118,24 +124,26 @@ const Navbar = (props) =>{
     < >
       {nav.map((item)=>
       item.title !== "Contact Me"?
-      <Button 
-      component="a" 
-      key={item.href} 
-      activeClassName={classes.active}
-      component={RouterLink}
-      to={item.href}
-      className={clsx(classes.button,classes.buttonText)}>
-        {item.title}
-      </Button>:
-      <Button 
-      component="a"
-       variant="outlined" 
-       color="secondary" 
-       activeClassName={classes.active}
-       component={RouterLink}
-       to={item.href}
-       className={classes.buttonText} 
-       key={item.href}>{item.title}</Button>
+        <Button 
+        component="a" 
+        key={item.href} 
+        activeClassName={classes.active}
+        component={RouterLink}
+        to={item.href}
+        className={clsx(classes.button,classes.buttonText)}>
+          {item.title}
+        </Button>:
+        <Button 
+        component="a"
+        variant="outlined" 
+        color="secondary" 
+        activeClassName={classes.active}
+        component={RouterLink}
+        to={item.href}
+        className={classes.buttonText} 
+        key={item.href}>
+          {item.title}
+        </Button>
       )
       }
     </>
@@ -171,7 +179,7 @@ const Navbar = (props) =>{
   return(
     <>
       <ElevationScroll {...props}>
-        <AppBar position="sticky">
+        <AppBar >
           <Container className={classes.root} disableGutters maxWidth={false}>
             <Hidden mdUp>
             <Toolbar className={classes.toolbar} disableGutters>
