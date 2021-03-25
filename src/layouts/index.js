@@ -6,15 +6,20 @@ import {
   Grid,
   colors,
   Typography,
+  Link,
+  Breadcrumbs,
   Hidden
 } from '@material-ui/core';
 import GlitchClip from 'react-glitch-effect/core/GlitchClip';
 import GlitchText from 'react-glitch-effect/core/GlitchText';
-
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import { 
+  NavLink as RouterLink,
+ } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Navbar from './navbar/index';
 import BottomBar from './bottombar/index';
-import Page from '../components/Page';
+import Page from 'src/components/Page';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,28 +27,38 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:theme.palette.primary.main
   },
   container:{
-    padding:"4% 5%"
+    padding:"4% 8%"
   },
   content:{
     marginTop:0,
+  },
+  link:{
+    color:"white",
+    textTransform:'none',
+    textDecoration:"none !important",
+    "&:hover": {
+      color:colors.lightBlue[400],
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        backgroundColor: "transparent"
+      }
+    },
   },
   startedContent:{
     display:"flex",
     alignItems:"center",
     justifyContent:"center",
     flexDirection:"column",
-    height:"70vh",
+    height:"75vh",
     opacity: 1,
     visibility: "visible",
-    padding: 0,
-    margin: 0,
     position: "relative",
 
   },
   typographyBreak:{
     textAlign:"center",
-    [theme.breakpoints.down('sm')]: {
-      fontSize:"2rem"
+    [theme.breakpoints.down('xs')]: {
+      fontSize:"2.5rem"
     },
   }
 }))
@@ -52,7 +67,8 @@ const Layout = ({
   children,
   navTitle,
   title,
-  subTitle
+  subTitle,
+  subString
 }) =>{
   const classes = useStyles()
   return (
@@ -63,50 +79,63 @@ const Layout = ({
         <Container disableGutters className={classes.container} maxWidth={false}>
         <Navbar/>
           <div className={classes.content}>
-              <Box my={3} height="100%">
-                <Grid 
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                >
-                  <Grid 
-                  item 
-                  lg={12}
-                  md={12}
-                  xs={12}
-                  >
-                    <div className={classes.startedContent}>
-                      <GlitchClip onHover={true} duration={1500}  >
-                        <GlitchText color1={colors.lightBlue[400]} >
-                          {navTitle === "Home"?
-                          <>
-                            <Hidden smUp>
-                              <Typography className={classes.typographyBreak} variant="h3">
-                                I'M
-                              </Typography>
-                              <Typography className={classes.typographyBreak} variant="h3">
-                                {title}
-                              </Typography>
-                            </Hidden>
-                            <Hidden xsDown>
-                              <Typography variant="h3">
-                                I'M {title}
-                              </Typography>
-                            </Hidden>
-                          </>
-                          :
-                          <Typography variant="h3">
+            <Grid 
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            >
+              <Grid 
+              item 
+              lg={12}
+              sm={12}
+              xs={12}
+              >
+                <div className={classes.startedContent}>
+                  <GlitchClip onHover={true} duration={1500}  >
+                    <GlitchText color1={colors.lightBlue[400]} >
+                      {navTitle === "Home"?
+                      <>
+                        <Hidden smUp>
+                          <Typography className={classes.typographyBreak} variant="h3">
+                            I'M
+                          </Typography>
+                          <Typography className={classes.typographyBreak} variant="h3">
                             {title}
-                          </Typography>}
-                        </GlitchText>
-                      </GlitchClip>
-                      {subTitle}
-                    </div>
-                  </Grid>
-                  {children}
-                </Grid>
-              </Box>
+                          </Typography>
+                        </Hidden>
+                        <Hidden xsDown>
+                          <Typography variant="h2">
+                            I'M {title}
+                          </Typography>
+                        </Hidden>
+                      </>
+                      :
+                      <Typography className={classes.typographyBreak} variant="h2">
+                        {title}
+                      </Typography>}
+                    </GlitchText>
+                  </GlitchClip>
+                  { navTitle === "Home"?
+                    subTitle:
+                    <Breadcrumbs separator={<NavigateNextIcon fontSize="small" style={{color: colors.common.white}} />} aria-label="breadcrumb">
+                      <Link color="textPrimary" component={RouterLink} to="/" className={classes.link}>
+                        Home
+                      </Link>
+                      <Typography color="secondary">{subString}</Typography>
+                    </Breadcrumbs>
+                  }
+                </div>
+              </Grid>
+              <Grid 
+              item 
+              lg={12}
+              sm={12}
+              xs={12}
+              >
+                {children}
+              </Grid>
+            </Grid>
           </div>
           <BottomBar/>
         </Container>
@@ -119,7 +148,8 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   navTitle: PropTypes.string,
   subTitle: PropTypes.element,
-  title: PropTypes.string
+  title: PropTypes.string,
+  subString: PropTypes.string
 };
 
 export default Layout;

@@ -9,6 +9,9 @@ import GlobalStyles from './components/GlobalStyles';
 import Profile from './layouts/index';
 import Home from './views/home/index';
 import About from './views/about/index';
+import Experience from './views/experience/index';
+import Project from './views/project/index';
+import Contact from './views/contact/index';
 
 function App() {
   return (
@@ -18,8 +21,9 @@ function App() {
         <Switch>
           <Route path="/" exact name="Home" component={Home} />
           <Route path="/about" name="About" component={About} />
-          <Route path="/project" name="Project" component={Profile} />
-          <Route path="/contact" name="Contact" component={Profile} />
+          <Route path="/experience" name="Experience" component={Experience} />
+          <Route path="/project" name="Project" component={Project} />
+          <Route path="/contact" name="Contact" component={Contact} />
         </Switch>
       </ThemeProvider>
     </Router>

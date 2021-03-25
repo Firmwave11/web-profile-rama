@@ -1,15 +1,15 @@
 const nav = [
   {
-    href: '/',
-    title: 'Home',
-  },
-  {
-    href: '/about',
-    title: 'About',
+    href: '/experience',
+    title: 'Experience',
   },
   {
     href: '/project',
     title: 'Project',
+  },
+  {
+    href: '/about',
+    title: 'About',
   },
   {
     href: '/contact',

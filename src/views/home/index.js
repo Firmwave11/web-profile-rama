@@ -7,7 +7,7 @@ import {
   Hidden
 } from '@material-ui/core';
 import Typed from "react-typed";
-import Layout from '../../layouts/index';
+import Layout from 'src/layouts/index';
 
 const useStyles = makeStyles((theme) => ({
   type:{
@@ -30,7 +30,7 @@ const Home = () =>{
   return (
     <Layout
     navTitle="Home"
-    title="RAMA SAPTO P"
+    title="RAMA SAPTO"
     subTitle={subTitle}
     >
       <div>

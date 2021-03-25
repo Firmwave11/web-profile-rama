@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
 
   },
   container:{
-    padding:"2px 5%"
+    padding:"2px 8%"
   },
   divider: {
     // Theme Color, or use css color in quote
@@ -140,7 +140,6 @@ const Navbar = (props) =>{
         component={RouterLink}
         to={item.href}
         className={clsx(classes.button,classes.buttonText)}
-        exact={item.href === "/"?true:false}
         >
           {item.title}
         </Button>:
@@ -163,9 +162,8 @@ const Navbar = (props) =>{
   const contentDown = (
     <div className={classes.drawerContent} >
     {nav.map((item)=>
-    <>
+    <React.Fragment key={item.href}>
     <ListItem
-      key={item.href}
       className={classes.item}
       disableGutters
     >
@@ -174,7 +172,6 @@ const Navbar = (props) =>{
         className={clsx(classes.button,classes.buttonDrawer)}
         component={RouterLink}
         to={item.href}
-        exact={item.href === "/"?true:false}
       >
         <span className={classes.title}>
           {item.title}
@@ -182,7 +179,7 @@ const Navbar = (props) =>{
       </Button>
     </ListItem>
     <Divider variant="middle" classes={{root:classes.divider}}/>
-    </>
+    </React.Fragment>
     )
     }
     </div>
@@ -194,7 +191,7 @@ const Navbar = (props) =>{
       <ElevationScroll {...props}>
         <AppBar >
           <Container className={classes.root} disableGutters maxWidth={false}>
-            <Hidden mdUp>
+            <Hidden smUp>
             <Toolbar className={classes.toolbar} disableGutters>
               <IconButton size="medium" color="secondary" onClick={handleDrawer}>
                 <MenuIcon color="secondary"/>
@@ -210,7 +207,7 @@ const Navbar = (props) =>{
               </Drawer>
             </Toolbar>
             </Hidden>
-            <Hidden smDown>
+            <Hidden xsDown>
               <Toolbar className={classes.toolbar} disableGutters>
                 {contentUp}
               </Toolbar>

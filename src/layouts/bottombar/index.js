@@ -9,13 +9,14 @@ import {
   colors,
   Grid,
   Typography,
-  Link
+  Link,
+  Tooltip
 } from '@material-ui/core';
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import NightsStayIcon from '@material-ui/icons/NightsStay';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import social from '../../data/socialLink';
+import social from 'src/data/socialLink';
 
 const useStyles = makeStyles((theme) => ({
   icon:{
@@ -59,7 +60,10 @@ const useStyles = makeStyles((theme) => ({
     paddingTop:2,
     fontSize:13,
     color:"#999999"
-  }
+  },
+  container:{
+    padding:"2px 8%"
+  },
 }));
 
 const BottomBar = () =>{
@@ -68,24 +72,28 @@ const BottomBar = () =>{
   const icon = (
     <>
       {social.map((item)=>
-      <IconButton key={item.href}  href={item.href} target="_blank" rel="noopener noreferrer" color="inherit" className={classes.icon}>
-        <item.icon />
-      </IconButton>
+      <Tooltip key={item.href} title={item.title}>
+        <IconButton   href={item.href} target="_blank" rel="noopener noreferrer" color="inherit" className={classes.icon}>
+          <item.icon />
+        </IconButton>
+      </Tooltip>
       )}
     </>
   )
   
   return(
-    <AppBar position="fixed" color="primary" className={classes.appBar} elevation={0}>
-      <Container maxWidth={false}>
-        <Toolbar>
+    <AppBar position="fixed" color="primary" className={classes.appBar} elevation={0} >
+      <Container className={classes.container} disableGutters maxWidth={false}>
+        <Toolbar disableGutters>
           <Hidden smDown>
             <Typography className={classes.copyRight}>
               © Built at 
             </Typography>
+            <Tooltip title="Night">
             <IconButton  className={classes.iconNight}>
               <NightsStayIcon/>
             </IconButton>
+            </Tooltip>
             <Typography className={classes.copyRight}>
              by&nbsp;
             </Typography>
