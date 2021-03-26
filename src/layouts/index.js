@@ -27,13 +27,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:theme.palette.primary.main
   },
   container:{
-    padding:"4% 8%"
+    padding:"4% 8%",
   },
   content:{
     marginTop:0,
   },
   link:{
-    color:"white",
+    color:colors.grey[300],
     textTransform:'none',
     textDecoration:"none !important",
     "&:hover": {
@@ -49,11 +49,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems:"center",
     justifyContent:"center",
     flexDirection:"column",
-    height:"75vh",
-    opacity: 1,
-    visibility: "visible",
-    position: "relative",
-
+    height:"70vh",
   },
   typographyBreak:{
     textAlign:"center",
@@ -84,6 +80,7 @@ const Layout = ({
             direction="row"
             justify="center"
             alignItems="center"
+            spacing={5}
             >
               <Grid 
               item 
@@ -118,7 +115,7 @@ const Layout = ({
                   </GlitchClip>
                   { navTitle === "Home"?
                     subTitle:
-                    <Breadcrumbs separator={<NavigateNextIcon fontSize="small" style={{color: colors.common.white}} />} aria-label="breadcrumb">
+                    <Breadcrumbs separator={<NavigateNextIcon fontSize="small" style={{color: colors.grey[300]}} />} aria-label="breadcrumb">
                       <Link color="textPrimary" component={RouterLink} to="/" className={classes.link}>
                         Home
                       </Link>

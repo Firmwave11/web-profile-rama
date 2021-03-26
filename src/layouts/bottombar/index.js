@@ -20,7 +20,7 @@ import social from 'src/data/socialLink';
 
 const useStyles = makeStyles((theme) => ({
   icon:{
-    color:"white",
+    color:colors.grey[300],
     textTransform:'none',
     "&:hover": {
       color:colors.lightBlue[400],
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   iconNight:{
-    color:"white",
+    color:colors.grey[300],
     textTransform:'none',
     "&:hover": {
       color:colors.yellow[400],

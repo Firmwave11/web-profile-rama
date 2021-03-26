@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform:"none"
   },
   button:{
-    color:"white",
+    color:colors.grey[300],
     textTransform:'none',
     marginRight:35,
     "&:hover": {
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
   activeContact: {
     backgroundColor: theme.palette.secondary.main,
-    color:colors.common.white
+    color:colors.grey[300]
   },
   buttonOutlined:{
     color:theme.palette.secondary.main,

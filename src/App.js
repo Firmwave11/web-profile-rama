@@ -12,6 +12,7 @@ import About from './views/about/index';
 import Experience from './views/experience/index';
 import Project from './views/project/index';
 import Contact from './views/contact/index';
+import NotFound from './views/404/index'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/experience" name="Experience" component={Experience} />
           <Route path="/project" name="Project" component={Project} />
           <Route path="/contact" name="Contact" component={Contact} />
+          <Route component={NotFound} status={404} />
         </Switch>
       </ThemeProvider>
     </Router>
