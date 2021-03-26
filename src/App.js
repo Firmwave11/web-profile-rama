@@ -7,12 +7,12 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from './theme';
 import GlobalStyles from './components/GlobalStyles';
 import Profile from './layouts/index';
-import Home from './views/home/index';
-import About from './views/about/index';
-import Experience from './views/experience/index';
-import Project from './views/project/index';
-import Contact from './views/contact/index';
-import NotFound from './views/404/index'
+import Home from './views/home';
+import About from './views/about';
+import Experience from './views/experience';
+import Project from './views/project';
+import Contact from './views/contact';
+import NotFound from './views/404'
 
 function App() {
   return (
