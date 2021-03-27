@@ -74,11 +74,9 @@ const About = () =>{
       </Grid>
       <Grid item lg={10} md={10} sm={12} xs={12} className={classes.typhography}>
         <Typography paragraph={true} >
-        Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius illum vocent mediocritatem an, 
-        cule dicta iriure at. Ubique maluisset vel te, 
-        his dico vituperata ut. Pro ei phaedrum maluisset. Ex audire suavitate has, 
-        ei quodsi tacimates sapientem sed, pri zril ubique ut. Te cule tation munere noluisse. 
-        Enim torquatos ne pri, eum mollis salutandi corrumpit et, fugit apeirian duo ad.
+        Hi, I'm Rama. Currently i'm working as a web developer. I am a University of Pembangunan Nasional Veteran Jakarta graduate.
+        I am particularly interested in projects that touch web, mobile, and maybe robotic. 
+        If you think I can be helpful to you or would like to meet me, please feel free to get in touch.
         </Typography>
           <List className={classes.infoList}>
             {stasMe.map((item)=>
@@ -87,7 +85,7 @@ const About = () =>{
               </ListItem>
             )}
           </List>
-        <Button variant="contained" color="secondary" style={{textTransform:"none"}}>
+        <Button component="a" href="/cv/_RAMA SAPTO PAMUNGKAS 2020.csv" variant="contained" color="secondary" style={{textTransform:"none"}} download>
           <GlitchClip onHover={true}>
             <Typography >
               Download CV
