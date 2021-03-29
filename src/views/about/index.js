@@ -13,6 +13,7 @@ import {
 import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
 import Layout from 'src/layouts/index';
 import AboutMe from './AboutMe';
+import AboutSite from './aboutSite';
 import Skill from './Skill';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +38,9 @@ const About = () =>{
         </Grid>
         <Grid item lg={12} md={12} sm={12} xs={12}>
           <Skill/>
+        </Grid>
+        <Grid item lg={12} md={12} sm={12} xs={12}>
+          <AboutSite/>
         </Grid>
       </Grid>
     </Layout>
