@@ -2,15 +2,7 @@ import React, {useState} from 'react';
 import { 
   makeStyles,
   Grid,
-  colors,
-  Typography,
-  Button,
-  Avatar,
-  List,
-  ListItem,
-  ListItemText
 } from '@material-ui/core';
-import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
 import Layout from 'src/layouts/index';
 import AboutMe from './AboutMe';
 import AboutSite from './aboutSite';
@@ -32,6 +24,9 @@ const About = () =>{
       <Grid 
       container 
       spacing={10}
+      style={{
+        marginTop:20
+      }}
       >
         <Grid item lg={12} md={12} sm={12} xs={12}>
           <AboutMe/>

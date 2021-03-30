@@ -45,18 +45,14 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   link:{
-    "& .MuiLink-underlineHover":{
-      textDecoration:"none !important"
-    }
+    textDecoration:"none !important"
   },
 }));
 
 export default function AboutSite() {
   const classes = useStyles();
   const [data, setResponseData] = useState(initialData);
-  // TODO think about persisting this somewhere
   const fetchData = useCallback(async () => {
-    // request must be authenticated if private
     const resCommit = await fetch(
       'https://api.github.com/repos/Firmwave11/web-profile-rama/commits',
     );
@@ -77,7 +73,6 @@ export default function AboutSite() {
     setResponseData(
       initialData.map((field) => ({
         ...field,
-        // update value if value was returned by call to github
         value: Object.keys(resData).includes(field.key)
           ? resData[field.key]
           : field.value,

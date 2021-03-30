@@ -4,8 +4,8 @@ import {
   Grid,
   Typography,
 } from '@material-ui/core';
-import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
 import Layout from 'src/layouts/index';
+import ContactForm from './contact';
 
 const useStyles = makeStyles((theme) => ({
   type:{
@@ -21,10 +21,15 @@ const Contact = () =>{
     title="CONTACT ME"
     subString="Contact Me"
     >
-      <Grid item lg={12} sm={12} xs={12}>
-        <Grid container>
-          <Grid item lg={1} sm={1} xs={1}>
-          </Grid>
+      <Grid 
+      container 
+      spacing={10}
+      style={{
+        marginTop:20
+      }}
+      >
+        <Grid item lg={12} sm={12} xs={12}>
+          <ContactForm/>
         </Grid>
       </Grid>
     </Layout>

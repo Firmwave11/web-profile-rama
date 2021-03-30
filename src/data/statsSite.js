@@ -18,11 +18,11 @@ const aboutSite = [
   {
     label: 'Total Commit',
     key: 'commit',
-    link: 'https://github.com/Firmwave11/web-profile-rama/commits',
+    link: 'https://github.com/Firmwave11/web-profile-rama/graphs/traffic',
   },
   {
     label: 'Tech Stack',
-    value: 'ReactJS, Material-ui, React-glitch, Go',
+    value: 'ReactJS, Material-ui, React-glitch-effect, Go',
   },
 ]
 

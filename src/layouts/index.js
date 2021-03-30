@@ -1,5 +1,8 @@
 import React from 'react';
 import { 
+  NavLink as RouterLink,
+ } from 'react-router-dom';
+import { 
   makeStyles,
   Box,
   Container,
@@ -13,9 +16,6 @@ import {
 import GlitchClip from 'react-glitch-effect/core/GlitchClip';
 import GlitchText from 'react-glitch-effect/core/GlitchText';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { 
-  NavLink as RouterLink,
- } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Navbar from './navbar/index';
 import BottomBar from './bottombar/index';
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems:"center",
     justifyContent:"center",
     flexDirection:"column",
-    height:"70vh",
+    height:"76vh",
   },
   typographyBreak:{
     textAlign:"center",
@@ -80,7 +80,6 @@ const Layout = ({
             direction="row"
             justify="center"
             alignItems="center"
-            spacing={5}
             >
               <Grid 
               item 
