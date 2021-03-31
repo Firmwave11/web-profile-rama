@@ -18,7 +18,7 @@ const Project = () =>{
   return (
     <Layout
     navTitle="Project"
-    title="PROJECT"
+    title="Still In Development"
     subString="Project"
     >
       <Grid item lg={12} sm={12} xs={12}>

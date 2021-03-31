@@ -5,6 +5,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
+import Typed from "react-typed";
 import Layout from 'src/layouts/index';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +19,7 @@ const Experience = () =>{
   return (
     <Layout
     navTitle="Experience"
-    title="EXPERIENCE"
+    title="Still In Development"
     subString="Experience"
     >
       <Grid item lg={12} sm={12} xs={12}>

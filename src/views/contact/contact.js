@@ -11,7 +11,8 @@ import {
   Link,
   colors,
   Button,
-  Box
+  Box,
+  Snackbar
 } from '@material-ui/core';
 import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
 import GlitchClip from 'react-glitch-effect/core/GlitchClip';
@@ -56,33 +57,100 @@ const useStyles = makeStyles((theme) => ({
   },
   iconContent:{
     minWidth:40
+  },
+  snackbar:{
+    '& .MuiSnackbarContent-root':{
+    textAlign:'center',
+    justifyContent:'center'
+    }
+  },
+  snackbarSuccess:{
+    backgroundColor:'#4caf50 !important',
+    '& .MuiSnackbarContent-root':{
+      backgroundColor:'#4caf50 !important'
+      }
+  },
+  snackbarFailed:{
+    backgroundColor:'red ',
+    '& .MuiSnackbarContent-root':{
+      backgroundColor:'red'
+    }
   }
-}))
+}))                      
 
 const validationSchema = yup.object({
-  tingkatan: yup
-    .string('Enter your Tingkatan')
-    .max(30, 'Tingkatan max 30 characters length')
-    .required('Tingkatan is required'),
-  kelas: yup
-    .string('Enter your Kelas')
-    .max(30, 'Kelas max 30 characters length')
-    .required('Kelas is required'),
+  name: yup
+    .string('Enter your Name')
+    .min(3, 'Name min 3 Characters')
+    .max(30, 'Name max 30 characters length or you can use just nickname')
+    .required('Name is required for me to know you'),
+  email: yup
+    .string('Enter your Email')
+    .email('Enter a valid email')
+    .max(40, 'Email max 30 characters length'),
+  phoneNumber: yup
+    .string('Enter your Phone Number')
+    .matches(/^[0-9]+$/, "Must be only digits")
+    .max(15, 'Must be exactly 5 digits'),
+  subject: yup
+    .string('Enter your Subject')
+    .min(3, 'Subject min 3 Characters')
+    .required('Subject is required'),
+  message: yup
+    .string('Enter your Message')
+    .min(5, 'Message min 5 Characters')
+    .required('Message is required (you can just say hello to me) '),
 });
 
 const ContactForm = () =>{
   const classes = useStyles()
+  const [message,setMessage] = useState('')
+  const [status,setStatus] = useState(false)
+  const [snack,setSnack] = useState(false)
 
-  const tingkatan = useFormik({
+  const handleClose = () => {
+    setSnack(false);
+  };
+
+  const form = useFormik({
     initialValues: {
-      kelas: '',
-      tingkatan: '',
+      name: '',
+      email: '',
+      phoneNumber:'',
+      subject:'',
+      message:''
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+       fetch(`${process.env.REACT_APP_API_CONTACT}`, {
+          method: "POST",
+          headers: { 
+            'x-api-key': `${process.env.REACT_APP_API_KEY}`,
+            "Content-Type": "application/json",
+            'channel' : 'ramasapto'
+        },
+          body: JSON.stringify(values)
+        })
+        .then((response) => {
+          if (response.ok) {
+            setSnack(true)
+            setStatus(true)
+            setMessage(<Typography >Message Sent Successfully</Typography>)
+          } else {
+            setSnack(true)
+            setStatus(false)
+            setMessage(<Typography >Message Send Failure</Typography>)
+          }
+        })
+        .then((responseJson) => {
+
+        })
+        .catch((error) => {
+          console.log(error)
+        });
     },
   });
+
   return (
     <Grid
     container
@@ -131,64 +199,96 @@ const ContactForm = () =>{
       sm={12} 
       xs={12}
       >
-        <ContactTextField 
-          fullWidth
-          id="tingkatan"
-          name="tingkatan"
-          label="Name"
-          color="secondary"
-          margin="normal"
-          value={tingkatan.values.tingkatan}
-          onChange={tingkatan.handleChange}
-          error={tingkatan.touched.tingkatan && Boolean(tingkatan.errors.tingkatan)}
-          helperText={tingkatan.touched.tingkatan && tingkatan.errors.tingkatan}
-        />
-        <ContactTextField 
-          fullWidth
-          id="kelas"
-          label="Email"
-          color="secondary"
-          margin="normal"
-          value={tingkatan.values.kelas}
-          onChange={tingkatan.handleChange}
-          error={tingkatan.touched.kelas && Boolean(tingkatan.errors.kelas)}
-          helperText={tingkatan.touched.kelas && tingkatan.errors.kelas}
-        />
-        <ContactTextField 
-          fullWidth
-          id="kelas"
-          label="Phone Number"
-          color="secondary"
-          margin="normal"
-          value={tingkatan.values.kelas}
-          onChange={tingkatan.handleChange}
-          error={tingkatan.touched.kelas && Boolean(tingkatan.errors.kelas)}
-          helperText={tingkatan.touched.kelas && tingkatan.errors.kelas}
-        />
-        <ContactTextField 
-          fullWidth
-          id="kelas"
-          label="Message"
-          color="secondary"
-          margin="normal"
-          multiline
-          rows={3}
-          rowsMax={8}
-          value={tingkatan.values.kelas}
-          onChange={tingkatan.handleChange}
-          error={tingkatan.touched.kelas && Boolean(tingkatan.errors.kelas)}
-          helperText={tingkatan.touched.kelas && tingkatan.errors.kelas}
-        />
-        <Box my={2} display="flex" justifyContent="flex-end">
-          <Button variant="contained" color="secondary" style={{textTransform:"none"}}>
-            <GlitchClip onHover={true}>
-              <Typography >
-                Send Message
-              </Typography>
-            </GlitchClip>
-          </Button>    
-        </Box>
+        <form onSubmit={form.handleSubmit}>
+          <ContactTextField 
+            fullWidth
+            id="name"
+            name="name"
+            label="Name"
+            color="secondary"
+            margin="normal"
+            autoComplete="off"
+            value={form.values.name}
+            onChange={form.handleChange}
+            error={form.touched.name && Boolean(form.errors.name)}
+            helperText={form.touched.name && form.errors.name}
+          />
+          <ContactTextField 
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            color="secondary"
+            margin="normal"
+            autoComplete="off"
+            value={form.values.email}
+            onChange={form.handleChange}
+            error={form.touched.email && Boolean(form.errors.email)}
+            helperText={form.touched.email && form.errors.email}
+          />
+          <ContactTextField 
+            fullWidth
+            id="phoneNumber"
+            name="phoneNumber"
+            label="Phone Number"
+            color="secondary"
+            margin="normal"
+            autoComplete="off"
+            value={form.values.phoneNumber}
+            onChange={form.handleChange}
+            error={form.touched.phoneNumber && Boolean(form.errors.phoneNumber)}
+            helperText={form.touched.phoneNumber && form.errors.phoneNumber}
+          />
+          <ContactTextField 
+            fullWidth
+            id="subject"
+            name="subject"
+            label="Subject"
+            color="secondary"
+            margin="normal"
+            autoComplete="off"
+            value={form.values.subject}
+            onChange={form.handleChange}
+            error={form.touched.subject && Boolean(form.errors.subject)}
+            helperText={form.touched.subject && form.errors.subject}
+          />
+          <ContactTextField 
+            fullWidth
+            id="message"
+            name="message"
+            label="Message"
+            color="secondary"
+            margin="normal"
+            autoComplete="off"
+            multiline
+            rows={3}
+            rowsMax={8}
+            value={form.values.message}
+            onChange={form.handleChange}
+            error={form.touched.message && Boolean(form.errors.message)}
+            helperText={form.touched.message && form.errors.message}
+          />
+          <Box my={2} display="flex" justifyContent="flex-end">
+            <Button variant="contained" color="secondary" style={{textTransform:"none"}} type="submit">
+              <GlitchClip onHover={true}>
+                <Typography >
+                  Send Message
+                </Typography>
+              </GlitchClip>
+            </Button>    
+          </Box>
+        </form>
       </Grid>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={snack}
+        style={{backgroundColor:'green'}}
+        className={clsx(classes.snackbar,classes.snackbarFailed, {
+          [classes.snackbarSuccess]: status
+        })}
+        onClose={handleClose}
+        message={message}
+      />
     </Grid>
   )
 }
