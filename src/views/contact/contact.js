@@ -12,7 +12,8 @@ import {
   colors,
   Button,
   Box,
-  Snackbar
+  Snackbar,
+  CircularProgress,
 } from '@material-ui/core';
 import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
 import GlitchClip from 'react-glitch-effect/core/GlitchClip';
@@ -105,6 +106,7 @@ const validationSchema = yup.object({
 const ContactForm = () =>{
   const classes = useStyles()
   const [message,setMessage] = useState('')
+  const [submit, setSubmit] = useState(false);
   const [status,setStatus] = useState(false)
   const [snack,setSnack] = useState(false)
 
@@ -122,6 +124,7 @@ const ContactForm = () =>{
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
+      setSubmit(true);
        fetch(`${process.env.REACT_APP_API_CONTACT}`, {
           method: "POST",
           headers: { 
@@ -133,10 +136,12 @@ const ContactForm = () =>{
         })
         .then((response) => {
           if (response.ok) {
+            setSubmit(false);
             setSnack(true)
             setStatus(true)
             setMessage(<Typography >Message Sent Successfully</Typography>)
           } else {
+            setSubmit(false);
             setSnack(true)
             setStatus(false)
             setMessage(<Typography >Message Send Failure</Typography>)
@@ -146,7 +151,12 @@ const ContactForm = () =>{
 
         })
         .catch((error) => {
+          setSubmit(false);
           console.log(error)
+          setSnack(true)
+          setStatus(false)
+          setMessage(<Typography >Sorry, An error has occurred on the server. Please, try your request again later.</Typography>)
+
         });
     },
   });
@@ -269,10 +279,16 @@ const ContactForm = () =>{
             helperText={form.touched.message && form.errors.message}
           />
           <Box my={2} display="flex" justifyContent="flex-end">
-            <Button variant="contained" color="secondary" style={{textTransform:"none"}} type="submit">
+            <Button variant="contained" color="secondary" style={{textTransform:"none",minWidth:105}} type="submit">
               <GlitchClip onHover={true}>
                 <Typography >
-                  Send Message
+                {
+                  submit ? (
+                    <CircularProgress color="inherit" />
+                  ) : (
+                    'Send Message'
+                  )
+                }
                 </Typography>
               </GlitchClip>
             </Button>    
