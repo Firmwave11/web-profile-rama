@@ -12,6 +12,9 @@ import Layout from 'src/layouts/index';
 const useStyles = makeStyles((theme) => ({
   type:{
     color:"#999999"
+  },
+  heightHome:{
+    height:"68vh !important"
   }
 }))
 
@@ -32,6 +35,7 @@ const Home = () =>{
     navTitle="Home"
     title="RAMA SAPTO"
     subTitle={subTitle}
+    heightHome={classes.heightHome}
     >
       <div>
 

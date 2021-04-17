@@ -7,7 +7,7 @@ const aboutSite = [
   },
   {
     label: 'Lines of Code powering this website',
-    value: '1523',
+    value: '2190',
     link: 'https://github.com/Firmwave11/web-profile-rama/graphs/contributors',
   },
   {

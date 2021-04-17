@@ -11,7 +11,7 @@ const Javascript = [
   },
   {
     type: "NextJS",
-    level: 75,
+    level: 80,
     color: {
       bar: "#f1e05a",
       title: {

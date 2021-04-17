@@ -16,6 +16,7 @@ import {
 import GlitchClip from 'react-glitch-effect/core/GlitchClip';
 import GlitchText from 'react-glitch-effect/core/GlitchText';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import Navbar from './navbar/index';
 import BottomBar from './bottombar/index';
@@ -24,7 +25,8 @@ import Page from 'src/components/Page';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow:1,
-    backgroundColor:theme.palette.primary.main
+    backgroundColor:theme.palette.primary.main,
+    overflowX:"hidden"
   },
   container:{
     padding:"4% 8%",
@@ -64,7 +66,8 @@ const Layout = ({
   navTitle,
   title,
   subTitle,
-  subString
+  subString,
+  heightHome
 }) =>{
   const classes = useStyles()
   return (
@@ -87,7 +90,8 @@ const Layout = ({
               sm={12}
               xs={12}
               >
-                <div className={classes.startedContent}>
+                <div 
+                className={clsx(classes.startedContent,heightHome)}>
                   <GlitchClip onHover={true} duration={1500}  >
                     <GlitchText color1={colors.lightBlue[400]} >
                       {navTitle === "Home"?
@@ -145,7 +149,8 @@ Layout.propTypes = {
   navTitle: PropTypes.string,
   subTitle: PropTypes.element,
   title: PropTypes.string,
-  subString: PropTypes.string
+  subString: PropTypes.string,
+  heightHome: PropTypes.string,
 };
 
 export default Layout;

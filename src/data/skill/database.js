@@ -21,7 +21,7 @@ const database = [
   },
   {
     type: "Redis",
-    level: 50,
+    level: 45,
     color: {
       bar: "rgb(103 114 222)",
       title: {

@@ -11,6 +11,9 @@ import Layout from 'src/layouts/index';
 const useStyles = makeStyles((theme) => ({
   type:{
     color:"#999999"
+  },
+  heightHome:{
+    height:"68vh !important"
   }
 }))
 
@@ -21,6 +24,7 @@ const Experience = () =>{
     navTitle="Experience"
     title="Still In Development"
     subString="Experience"
+    heightHome={classes.heightHome}
     >
       <Grid item lg={12} sm={12} xs={12}>
         <Grid container>

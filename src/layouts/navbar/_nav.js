@@ -5,7 +5,7 @@ const nav = [
   },
   {
     href: '/project',
-    title: 'Project',
+    title: 'Projects',
   },
   {
     href: '/about',
