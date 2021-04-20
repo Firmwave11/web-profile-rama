@@ -20,6 +20,16 @@ const Javascript = [
     }
   },
   {
+    type: "Redux",
+    level: 70,
+    color: {
+      bar: "#f1e05a",
+      title: {
+        background: "#d6c646"
+      }
+    }
+  },
+  {
     type: "ReactNative",
     level: 20,
     color: {

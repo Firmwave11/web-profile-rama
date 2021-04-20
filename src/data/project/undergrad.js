@@ -2,7 +2,7 @@ const Undergrad = [
   {
     image:'/project/data-not-found.svg',
     title:'Expert System',
-    description:'Expert System for Diagnosis of Diseases of Rice Plants Such system is especially useful for those farmers who are not getting the agricultural specialists at any time for their help to control the problems in their rice plant. I implemented the method the method forward chaining to diagnosis of diseases. Developed the front-end using HTML5, Javascript, and CSS. Also, Larvel for back-end and fron-end',
+    description:'Expert System for Diagnosis of Diseases of Rice Plants Such system is especially useful for those farmers who are not getting the agricultural specialists at any time for their help to control the problems in their rice plant. I implemented the method the method forward chaining to diagnosis of diseases. Developed the front-end using HTML5, Javascript, and CSS. Also, Larvel for back-end and front-end',
     tech:'Laravel, Javascript, CSS, HTML'
   },
   {

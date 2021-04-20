@@ -7,7 +7,7 @@ const aboutSite = [
   },
   {
     label: 'Lines of Code powering this website',
-    value: '2190',
+    value: '2356',
     link: 'https://github.com/Firmwave11/web-profile-rama/graphs/contributors',
   },
   {
@@ -22,7 +22,7 @@ const aboutSite = [
   },
   {
     label: 'Tech Stack',
-    value: 'ReactJS, Material-ui, React-glitch-effect, Go',
+    value: 'ReactJS, Material-ui, React-glitch-effect, Formik, react-skillbars, Go',
   },
 ]
 
