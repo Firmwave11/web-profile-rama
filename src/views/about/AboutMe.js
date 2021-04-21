@@ -8,7 +8,8 @@ import {
   Avatar,
   List,
   ListItem,
-  ListItemText
+  ListItemText,
+  Backdrop
 } from '@material-ui/core';
 import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
 import GlitchClip from 'react-glitch-effect/core/GlitchClip';
@@ -16,8 +17,9 @@ import stasMe from 'src/data/statsMe';
 
 const useStyles = makeStyles((theme) => ({
   large: {
-    width: theme.spacing(10),
-    height: theme.spacing(10),
+    width: 150,
+    height: 150,
+    cursor:"zoom-in"
   },
   image:{
     display:"flex",
@@ -52,11 +54,25 @@ const useStyles = makeStyles((theme) => ({
     '& strong':{
       color:theme.palette.text.secondary
     }
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+  imgBackdrop:{
+    width:'80%',
   }
 }))
 
 const About = () =>{
   const classes = useStyles()
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
   return (
     <Grid 
     container 
@@ -70,7 +86,7 @@ const About = () =>{
         </GlitchSquiggly>
       </Grid>
       <Grid item lg={2} md={2}  sm={12} xs={12} className={classes.image} >
-        <Avatar alt="Remy Sharp" src="/static/logo512.png" className={classes.large} />
+        <Avatar alt="Rama Sapto Pamungkas" src="/static/profile/rama-pic.jpg" className={classes.large} onClick={handleToggle} />
       </Grid>
       <Grid item lg={10} md={10} sm={12} xs={12} className={classes.typhography}>
         <Typography paragraph={true} >
@@ -93,6 +109,9 @@ const About = () =>{
           </GlitchClip>
         </Button>
       </Grid>
+      <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
+        <img alt="Rama Sapto Pamungkas" src="/static/profile/rama-pic.jpg" className={classes.imgBackdrop} />
+      </Backdrop>
     </Grid>
   )
 }

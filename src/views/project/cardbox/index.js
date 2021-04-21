@@ -26,7 +26,10 @@ const useStyles = makeStyles((theme) => ({
     margin:"0px 4% 4%",
   },
   rootMedia:{
-    backgroundSize:"300px 100px"
+    backgroundSize:"300px 100px",
+    [theme.breakpoints.down('xs')]: {
+      backgroundSize:"200px 60px",
+    },
   },
   content:{
     padding:"5%",
@@ -43,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
   },
   techStack:{
     marginTop:"auto"
+  },
+  headTitle:{
+    [theme.breakpoints.down('xs')]: {
+      fontSize:"2rem"
+    },
   }
 }))
 
@@ -60,7 +68,7 @@ const CardBox = ({
           classes={{root:classes.rootMedia}}
         />
         <CardContent className={classes.content}>
-          <Typography gutterBottom variant="h3" component="h2" color="primary">
+          <Typography className={classes.headTitle} gutterBottom variant="h3" component="h2" color="primary">
             {item.title}
           </Typography>
           <Typography className={classes.description} gutterBottom variant="h6" color="primary" component="p">
