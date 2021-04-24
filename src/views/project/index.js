@@ -24,6 +24,9 @@ const styles = (theme) => ({
     display:'flex',
     flexWrap:'wrap',
     justifyContent:'center',
+    [theme.breakpoints.down('xs')]: {
+      padding:0
+    },
   },
 });
 const TabPanel = withStyles(styles)((props) => {
