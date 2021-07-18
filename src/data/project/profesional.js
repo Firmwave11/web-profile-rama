@@ -17,6 +17,12 @@ const Profesional = [
     description:'CICD Dashboard is that help users making template (jenkinsFile, playbookFile and gitlab-ciFile) and monitoring CICD Pipeline tools Sonarqube, Jenkins, and Gitlab-CI. Developed the front-end using ReactJS, Material-UI for CSS and react-apex-chart for view CICD pipeline trends. Also, Go programming langguage for the back-end integrate API Sonarqube, Jenkins, and Gitlab-CI. ',
     tech:'ReactJS, Material-UI, Go'
   },
+  {
+    image:'/work/logo-otten-coffee.png',
+    title:'Otten Coffee E-commerce',
+    description:' Otten Coffee E-commerce is sells various coffee beans and coffee equipments. Developed the back-end using Go and PHP with framework Symfony, and RabitMQ for message broker. ',
+    tech:'Go, Symfony, RabbitMQ'
+  },
 ]
 
 export default Profesional

@@ -154,7 +154,7 @@ const Experience = () =>{
             <div className={classes.root}>
               <Typography variant="h6" paragraph>
               Graduated with a Bachelor's Degree majored in Computer Science from 
-              University of Pembangunan Nasional Veteran Jakarta with a GPA of 3.43
+              University of Pembangunan Nasional Veteran Jakarta with a GPA of 3.46
               2016 - 2020
               </Typography>        
             </div>
