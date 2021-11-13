@@ -1,7 +1,7 @@
 const tools = [
   {
     type: "Git",
-    level: 60,
+    level: 70,
     color: {
       bar: "rgb(197 92 92)",
       title: {

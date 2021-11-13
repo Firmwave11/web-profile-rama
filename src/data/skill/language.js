@@ -21,7 +21,7 @@ const Language = [
   },
   {
     type: "Go",
-    level: 75,
+    level: 80,
     color: {
       bar: "#3498db",
       title: {
