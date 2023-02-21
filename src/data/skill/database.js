@@ -1,6 +1,26 @@
 const database = [
   {
-    type: "SQL",
+    type: "SQL Server",
+    level: 80,
+    color: {
+      bar: "rgb(103 114 222)",
+      title: {
+        background: "rgb(81, 93, 212)"
+      }
+    }
+  },
+  {
+    type: "PostgreSql",
+    level: 80,
+    color: {
+      bar: "rgb(103 114 222)",
+      title: {
+        background: "rgb(81, 93, 212)"
+      }
+    }
+  },
+  {
+    type: "MYSQL",
     level: 80,
     color: {
       bar: "rgb(103 114 222)",

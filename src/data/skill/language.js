@@ -1,5 +1,15 @@
 const Language = [
   {
+    type: "Go",
+    level: 85,
+    color: {
+      bar: "#3498db",
+      title: {
+        background: "#2980b9"
+      }
+    }
+  },
+  {
     type: "HTML+CSS",
     level:80,
     color: {
@@ -10,8 +20,8 @@ const Language = [
     }
   },
   {
-    type: "Javascript",
-    level: 75,
+    type: "C#",
+    level: 80,
     color: {
       bar: "#3498db",
       title: {
@@ -20,7 +30,7 @@ const Language = [
     }
   },
   {
-    type: "Go",
+    type: "Javascript",
     level: 80,
     color: {
       bar: "#3498db",

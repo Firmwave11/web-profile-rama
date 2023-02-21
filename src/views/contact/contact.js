@@ -22,7 +22,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import clsx from 'clsx';
 import data from 'src/data/contactMe';
-
+import emailjs from '@emailjs/browser';
 
 const ContactTextField = withStyles({
   root: {
@@ -125,39 +125,20 @@ const ContactForm = () =>{
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       setSubmit(true);
-       fetch(`${process.env.REACT_APP_API_CONTACT}`, {
-          method: "POST",
-          headers: { 
-            'x-api-key': `${process.env.REACT_APP_API_KEY}`,
-            "Content-Type": "application/json",
-            'channel' : 'ramasapto'
-        },
-          body: JSON.stringify(values)
-        })
-        .then((response) => {
-          if (response.ok) {
-            setSubmit(false);
-            setSnack(true)
-            setStatus(true)
-            setMessage(<Typography >Message Sent Successfully</Typography>)
-          } else {
-            setSubmit(false);
-            setSnack(true)
-            setStatus(false)
-            setMessage(<Typography >Message Send Failure</Typography>)
-          }
-        })
-        .then((responseJson) => {
-
-        })
-        .catch((error) => {
-          setSubmit(false);
-          console.log(error)
-          setSnack(true)
-          setStatus(false)
-          setMessage(<Typography >Sorry, An error has occurred on the server. Please, try your request again later.</Typography>)
-
-        });
+      emailjs.send(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, values, process.env.REACT_APP_EMAILJS_PUBLIC_KEY)
+      .then((result) => {
+        console.log(result)
+        setSubmit(false);
+        setSnack(true)
+        setStatus(true)
+        setMessage(<Typography >Message Sent Successfully</Typography>)
+      }, (error) => {
+        setSubmit(false);
+        console.log(error)
+        setSnack(true)
+        setStatus(false)
+        setMessage(<Typography >Sorry, An error has occurred on the server. Please, try your request again later.</Typography>)
+      });
     },
   });
 

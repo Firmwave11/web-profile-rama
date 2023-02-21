@@ -23,6 +23,12 @@ const Profesional = [
     description:' Otten Coffee E-commerce is sells various coffee beans and coffee equipments. Developed the back-end using Go and PHP with framework Symfony, and RabitMQ for message broker. ',
     tech:'Go, Symfony, RabbitMQ'
   },
+  {
+    image:'/work/pt-buma-logo.png',
+    title:'BUMA Personal Workspace (Bspace)',
+    description:' BUMA Personal Workspace is platform that is used to support the needs of BUMA employees to make it easier and more effective. Developed the back-end using C# (.NET),Database SQL Server, and Azure Service Bus for message broker. ',
+    tech:'C#, SQL Server, Azure Service Bus'
+  },
 ]
 
 export default Profesional

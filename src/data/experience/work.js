@@ -1,9 +1,28 @@
 
 const Work = [
 	{
+		name: "PT. Bukit Makmur Mandiri Utama",
+		position: "Backend Developer",
+		dated: "August 2022 - Present",
+		logo: "/work/pt-buma-logo.png",
+		companyLink: "https://deltadunia.com/buma/company-profile/",
+		description:
+			`
+			<p>PT Bukit Makmur Mandiri Utama, or often called BUMA, was established in 1998, and is currently the second largest independent coal mining contractor in Indonesia. BUMA was established as a family business, and was acquired by Delta Dunia in 2009, turning it into a professionally-run corporate. It currently holds around 20% market share by providing coal mining services to some of the largest and longest-running names in the Indonesian coal industry and some new players with high potentials for future growth.</p>
+			<p>Contribution : </p>  
+			<ul>
+				<li>Worked for internal platform Application HRGS </li>
+				<li>Developed and maintained the backend (sometimes work on frontend) of the internal Application BUMA</li>
+				<li>Implemented an C# .Net with CQRS microservice REST API for internal Application BUMA</li>
+				<li>Implemented Workflow Engine for sending data to SAP and another runtask </li>
+				<li>Integration 3rd Party Like SAP,Traveloka, etc.</li>
+			</ul>
+			`
+	},
+	{
 		name: "Otten Coffee Indonesia",
 		position: "Backend Developer",
-		dated: "June 2021 - Present",
+		dated: "June 2021 - September 2022",
 		logo: "/work/logo-otten-coffee.png",
 		companyLink: "https://ottencoffee.co.id",
 		description:
@@ -11,9 +30,10 @@ const Work = [
 			<p>Otten Coffee is a startup specialty coffee shop which sells various coffee beans and coffee equipments. As there is a growing demand for their products.</p>
 			<p>Contribution : </p>  
 			<ul>
-			<li>Worked closely with Frontend Engineers to develop pixel perfect User Interface </li>
-			<li>Developed and maintained the backend of the e-commerce Otten Coffee</li>
-			<li>Implemented an Golang microservice REST API for e-commerce Otten Coffee </li></ul>
+				<li>Worked closely with Frontend Engineers to develop pixel perfect User Interface </li>
+				<li>Developed and maintained the backend of the e-commerce Otten Coffee</li>
+				<li>Implemented an Golang microservice REST API for e-commerce Otten Coffee </li>
+			</ul>
 			`
 	},
 	{
