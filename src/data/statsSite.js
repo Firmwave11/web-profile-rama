@@ -17,7 +17,7 @@ const aboutSite = [
   },
   {
     label: 'Tech Stack',
-    value: 'ReactJS, Material-ui, React-glitch-effect, Formik, react-skillbars, Go, EmailJS, Netifly',
+    value: 'ReactJS, Material-ui, React-glitch-effect, Formik, react-skillbars, Go, EmailJS, Netlify',
   },
 ]
 
