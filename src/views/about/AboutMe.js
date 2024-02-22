@@ -101,7 +101,7 @@ const About = () =>{
               </ListItem>
             )}
           </List>
-        <Button component="a" href="/cv/RESUME_RAMA_SAPTO_PAMUNGKAS_2023.pdf" variant="contained" color="secondary" style={{textTransform:"none"}} download>
+        <Button component="a" href="/cv/RESUME_RAMA_SAPTO_PAMUNGKAS_2024.pdf" variant="contained" color="secondary" style={{textTransform:"none"}} download>
           <GlitchClip onHover={true}>
             <Typography >
               Download CV
